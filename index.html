@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MuzOps Systems | Senior DevOps Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #030712;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #f8fafc;
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .mono { font-family: 'Fira Code', monospace; }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* LOGO ANIMATION */
+        .logo-container .logo-text {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            letter-spacing: -0.05em;
+        }
+        .logo-container:hover .logo-text {
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+        }
+        .logo-container .logo-m {
+            transition: transform 0.4s ease;
+        }
+        .logo-container:hover .logo-m {
+            transform: scale(1.1);
+        }
+
+        /* FIXED OVERLAP LOGIC */
+        .headline-wrapper {
+            min-height: 160px;
+            display: flex;
+            align-items: flex-start;
+            margin-top: 1rem;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+        
+        .marquee-content {
+            display: flex;
+            width: fit-content;
+            animation: marquee 30s linear infinite;
+        }
+
+        .tool-icon {
+            filter: grayscale(100%);
+            transition: all 0.4s ease;
+            opacity: 0.4;
+        }
+        
+        .marquee-container:hover .tool-icon {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Gray-to-Color Image logic */
+        .devops-image {
+            filter: grayscale(100%);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .devops-image:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        .field-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .field-card:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateY(-5px);
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[100] p-6">
+        <div class="max-w-7xl mx-auto glass rounded-2xl px-8 py-4 flex justify-between items-center shadow-2xl">
+            <!-- Animated Logo -->
+            <div class="flex items-center gap-4 cursor-pointer logo-container" onclick="window.scrollTo(0,0)">
+                <div class="bg-indigo-600 p-2 rounded-lg logo-m">
+                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none">
+                        <path d="M10 80L35 20L50 55L65 20L90 80" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="50" cy="80" r="8" fill="white"/>
+                    </svg>
+                </div>
+                <div class="text-xl font-bold tracking-tight logo-text uppercase">
+                    MUZOPS <span class="text-indigo-500">SYSTEMS</span>
+                </div>
+            </div>
+            <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest">
+                <a href="#home" class="hover:text-indigo-400 transition">Home</a>
+                <a href="#about" class="hover:text-indigo-400 transition">About</a>
+                <a href="#tools" class="hover:text-indigo-400 transition">Tools</a>
+                <a href="#dsm" class="hover:text-indigo-400 transition">DSM</a>
+                <a href="#contact" class="text-indigo-500 border border-indigo-500/30 px-4 py-1 rounded-full hover:bg-indigo-500 hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section: HOME -->
+    <section id="home" class="pt-48 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+            <div class="pt-10">
+                <h2 class="text-indigo-500 font-bold tracking-[0.4em] text-xs mb-4 uppercase">Infrastructure as Code</h2>
+                <div class="headline-wrapper">
+                    <h1 id="rotating-headline" class="text-4xl lg:text-6xl font-black leading-tight transition-all duration-500 opacity-100">
+                        Scalable Cloud Orchestration.
+                    </h1>
+                </div>
+                <p class="text-slate-400 text-lg max-w-md mt-4 mb-10">
+                    Architecting resilient, automated environments for high-velocity engineering teams across AWS, Azure, and GCP.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#contact" class="bg-indigo-600 px-8 py-4 rounded-xl font-bold hover:bg-indigo-500 transition">Start Project</a>
+                    <a href="#tools" class="glass px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition">Explore Stack</a>
+                </div>
+            </div>
+
+            <!-- Terminal Mockup -->
+            <div class="glass rounded-3xl overflow-hidden border-white/5 shadow-2xl relative min-h-[420px]">
+                <div class="bg-white/5 px-6 py-4 flex items-center justify-between">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div id="terminal-header" class="text-[10px] mono opacity-40 uppercase tracking-widest">muzops-init.sh</div>
+                </div>
+                <div id="terminal-body" class="p-8 mono text-sm transition-all duration-500">
+                    <div class="text-emerald-400 mb-2">➜ ~ muzops --status</div>
+                    <div id="terminal-icon" class="text-6xl my-8 text-indigo-500">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div id="terminal-cmd" class="text-indigo-300 font-bold mb-6 bg-white/5 p-4 rounded-lg border border-white/5">
+                        terraform init && terraform apply
+                    </div>
+                    <div id="terminal-quote" class="text-slate-400 italic leading-relaxed border-l-2 border-indigo-500 pl-4">
+                        "Automate the predictable, so you can manage the exceptional."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: ABOUT ME -->
+    <section id="about" class="py-32 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <!-- Left Side: Detailed Content -->
+            <div class="space-y-8 order-2 lg:order-1">
+                <h2 class="text-4xl font-black italic uppercase tracking-tighter">About <span class="text-indigo-500">MuzOps Systems</span></h2>
+                <div class="space-y-4 text-slate-400 leading-relaxed text-lg">
+                    <p>
+                        MuzOps Systems is a premier DevOps consultancy led by a <span class="text-white font-bold">Senior DevOps Architect with 5+ years of production experience</span> in complex distributed systems.
+                    </p>
+                    <p>
+                        We don't just "do cloud"; we engineer <span class="text-indigo-400 font-semibold">Immutable Infrastructure</span>. Our mission is to transform manual, error-prone deployment processes into highly efficient, self-healing automated toolchains. We specialize in cross-platform migrations between <span class="text-white font-bold">AWS, Azure, and GCP</span>.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="field-card p-6 rounded-2xl flex items-start gap-4">
+                        <i class="fas fa-project-diagram text-2xl text-indigo-500 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold">IaC Mastery</h4>
+                            <p class="text-[11px] opacity-60">Terraform & OpenTofu for state-managed cloud resources.</p>
+                        </div>
+                    </div>
+                    <div class="field-card p-6 rounded-2xl flex items-start gap-4">
+                        <i class="fas fa-dharmachakra text-2xl text-indigo-500 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold">K8s Orchestration</h4>
+                            <p class="text-[11px] opacity-60">Production-grade EKS, AKS, and GKE cluster management.</p>
+                        </div>
+                    </div>
+                    <div class="field-card p-6 rounded-2xl flex items-start gap-4">
+                        <i class="fab fa-docker text-2xl text-indigo-500 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold">Container Ops</h4>
+                            <p class="text-[11px] opacity-60">Docker optimization and secure image registries.</p>
+                        </div>
+                    </div>
+                    <div class="field-card p-6 rounded-2xl flex items-start gap-4">
+                        <i class="fab fa-jenkins text-2xl text-indigo-500 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold">CI/CD Strategy</h4>
+                            <p class="text-[11px] opacity-60">Automated gates for zero-downtime releases.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: DevOps Tool Image (Grayscale to Color) -->
+            <div class="relative group order-1 lg:order-2">
+                <div class="absolute inset-0 bg-indigo-500/10 blur-3xl rounded-full"></div>
+                <img src="https://images.unsplash.com/photo-1667372393086-9d4001d51cf1?q=80&w=2070&auto=format&fit=crop" 
+                     class="devops-image relative z-10 rounded-3xl border border-white/10 shadow-2xl w-full h-auto cursor-pointer" 
+                     alt="DevOps Tools Toolchain Visualization">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: TOOLS (Marquee) -->
+    <section id="tools" class="py-32 bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto px-6 mb-20 text-center">
+            <h2 class="text-4xl font-black italic uppercase mb-4">Technical <span class="text-indigo-500">Stack</span></h2>
+            <p class="text-slate-400 mx-auto max-w-2xl">A high-performance toolset used to build world-class infrastructure.</p>
+        </div>
+
+        <div class="marquee-container py-12 border-y border-white/5 overflow-hidden">
+            <div class="marquee-content items-center gap-16 px-8">
+                <!-- Tool Logos -->
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#FF9900]"><i class="fab fa-aws"></i> AWS</div>
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#7B42BC]"><i class="fas fa-project-diagram"></i> Terraform</div>
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#326CE5]"><i class="fas fa-dharmachakra"></i> K8S</div>
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#2496ED]"><i class="fab fa-docker"></i> Docker</div>
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#0089D6]"><i class="fab fa-microsoft"></i> Azure</div>
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#4285F4]"><i class="fab fa-google"></i> GCP</div>
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#F05032]"><i class="fab fa-git-alt"></i> Git</div>
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#61DAFB]"><i class="fas fa-infinity"></i> DevOps</div>
+                <!-- Duplicate for loop -->
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#FF9900]"><i class="fab fa-aws"></i> AWS</div>
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#7B42BC]"><i class="fas fa-project-diagram"></i> Terraform</div>
+                <div class="tool-icon flex items-center gap-4 text-2xl font-bold hover:text-[#326CE5]"><i class="fas fa-dharmachakra"></i> K8S</div>
+            </div>
+        </div>
+
+        <!-- Monitoring & Observability Blocks -->
+        <div class="max-w-7xl mx-auto px-6 mt-20">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold uppercase tracking-widest text-indigo-400">Monitoring & Observability</h3>
+                <p class="text-slate-500 mt-2">Visibility into every layer of your application stack.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="glass p-8 rounded-3xl field-card">
+                    <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-indigo-500 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-3">Metrics Collection</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Real-time telemetry using **Prometheus** and **Grafana** to track CPU, RAM, and custom business KPIs.</p>
+                </div>
+                <div class="glass p-8 rounded-3xl field-card">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-list-ul text-emerald-500 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-3">Log Aggregation</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Centralized logging via **ELK Stack** or **Loki** for rapid troubleshooting across microservices.</p>
+                </div>
+                <div class="glass p-8 rounded-3xl field-card">
+                    <div class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-microscope text-orange-500 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-3">Distributed Tracing</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Implementing **Jaeger** or **Tempo** to visualize request flow and latency bottlenecks in high-scale traffic.</p>
+                </div>
+                <div class="glass p-8 rounded-3xl field-card">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bell text-red-500 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-3">Intelligent Alerting</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Proactive incident response using **Alertmanager** and **PagerDuty** with threshold-based triggers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: DSM TOOL -->
+    <section id="dsm" class="py-32 px-6 max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black uppercase italic">Daily Status <span class="text-indigo-500">Manager</span></h2>
+            <p class="text-slate-400 mt-4">Standardized communication for engineering leadership.</p>
+        </div>
+        <div class="glass p-10 rounded-[2.5rem] border-white/5">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest opacity-50 block mb-3">Today's Progress</label>
+                    <textarea id="today-work" placeholder="Deployment of K8s cluster..." class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-indigo-500 outline-none text-sm h-32"></textarea>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest opacity-50 block mb-3">Planned Next</label>
+                    <textarea id="tomorrow-work" placeholder="IAM policy auditing..." class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:border-indigo-500 outline-none text-sm h-32"></textarea>
+                </div>
+            </div>
+            <button onclick="generateDSM()" class="w-full py-5 bg-indigo-600 rounded-2xl font-black uppercase tracking-widest hover:bg-indigo-500 transition shadow-xl shadow-indigo-600/20">
+                Generate Update
+            </button>
+            <div id="dsm-result" class="hidden mt-8 p-8 bg-black/40 border border-white/5 rounded-3xl mono text-sm relative">
+                <button onclick="copyDSM()" class="absolute top-6 right-6 text-[10px] bg-indigo-500/20 text-indigo-400 px-4 py-2 rounded-full hover:bg-indigo-500 hover:text-white transition">COPY</button>
+                <div id="dsm-output-text" class="text-indigo-300 whitespace-pre-line leading-relaxed"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: CONTACT -->
+    <section id="contact" class="py-32 px-6 max-w-5xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-4xl font-black uppercase italic mb-6">Let's <span class="text-indigo-500">Scale</span></h2>
+                <!-- Motivational Hire Quote -->
+                <div class="p-6 border-l-4 border-indigo-500 bg-white/5 rounded-r-2xl mb-10">
+                    <p class="text-xl italic font-medium text-slate-300">
+                        "Your infrastructure isn't just a cost—it's the engine of your business. Let's build it to be unbreakable, automated, and ready for whatever comes next."
+                    </p>
+                    <p class="mt-4 text-xs font-bold uppercase tracking-widest text-indigo-400">— MuzOps Architecture Philosophy</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <a href="https://wa.me/yournumber" class="flex items-center gap-4 p-5 glass rounded-2xl text-[#25D366] hover:bg-[#25D366]/10 transition group">
+                        <i class="fab fa-whatsapp text-2xl group-hover:scale-110 transition"></i>
+                        <span class="font-bold">Connect via WhatsApp</span>
+                    </a>
+                    <a href="https://t.me/yourusername" class="flex items-center gap-4 p-5 glass rounded-2xl text-[#0088cc] hover:bg-[#0088cc]/10 transition group">
+                        <i class="fab fa-telegram text-2xl group-hover:scale-110 transition"></i>
+                        <span class="font-bold">Message on Telegram</span>
+                    </a>
+                </div>
+            </div>
+            <div class="glass p-10 rounded-[2.5rem]">
+                <form action="https://formspree.io/f/mqakevlv" method="POST" class="space-y-4">
+                    <input type="text" name="name" placeholder="Name" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-indigo-500 outline-none">
+                    <input type="email" name="email" placeholder="Email" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-indigo-500 outline-none">
+                    <textarea name="message" placeholder="Project details..." required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:border-indigo-500 outline-none h-24"></textarea>
+                    <button type="submit" class="w-full py-4 bg-indigo-600 rounded-xl font-bold hover:bg-indigo-500 transition">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 text-center">
+        <div class="flex items-center justify-center gap-2 mb-4">
+            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+            <span class="text-[10px] font-bold uppercase tracking-widest opacity-40">All Systems Operational</span>
+        </div>
+        <div class="text-[11px] font-bold uppercase tracking-[0.4em] opacity-30">
+            © 2025 MUZOPS SYSTEMS • ALL RIGHTS RESERVED
+        </div>
+    </footer>
+
+    <script>
+        // Headlines Rotation
+        const headlines = [
+            "Continuous Integration & Delivery Pipelines.",
+            "Immutable Infrastructure with Terraform & OpenTofu.",
+            "Enterprise Multi-Cloud Governance (AWS/Azure/GCP).",
+            "Scalable Microservices on Kubernetes Clusters.",
+            "GitOps Workflows for Zero-Downtime Releases.",
+            "Site Reliability Engineering & Observability."
+        ];
+        let hIdx = 0;
+        const headlineEl = document.getElementById('rotating-headline');
+
+        setInterval(() => {
+            headlineEl.style.opacity = '0';
+            headlineEl.style.transform = 'translateY(-10px)';
+            
+            setTimeout(() => {
+                hIdx = (hIdx + 1) % headlines.length;
+                headlineEl.innerText = headlines[hIdx];
+                headlineEl.style.opacity = '1';
+                headlineEl.style.transform = 'translateY(0)';
+            }, 500);
+        }, 4000);
+
+        // Terminal Mockup logic
+        const terminalStates = [
+            { h: 'terraform-apply.sh', i: 'fa-project-diagram', c: 'terraform apply --auto-approve', q: '"Infrastructure as code is the source of truth."' },
+            { h: 'k8s-rollout.sh', i: 'fa-dharmachakra', c: 'kubectl rollout restart deploy/api', q: '"Orchestrating resilience at scale."' },
+            { h: 'security-scan.sh', i: 'fa-shield-alt', c: 'trivy image muzops-prod:latest', q: '"Security is a foundation, not an afterthought."' }
+        ];
+        let tIdx = 0;
+        const tBody = document.getElementById('terminal-body');
+
+        setInterval(() => {
+            if(!tBody) return;
+            tBody.style.opacity = '0';
+            setTimeout(() => {
+                tIdx = (tIdx + 1) % terminalStates.length;
+                const s = terminalStates[tIdx];
+                document.getElementById('terminal-header').innerText = s.h;
+                document.getElementById('terminal-icon').innerHTML = `<i class="fas ${s.i}"></i>`;
+                document.getElementById('terminal-cmd').innerText = s.c;
+                document.getElementById('terminal-quote').innerText = s.q;
+                tBody.style.opacity = '1';
+            }, 500);
+        }, 5000);
+
+        // DSM Functions
+        function generateDSM() {
+            const today = document.getElementById('today-work').value || 'System optimization';
+            const tomorrow = document.getElementById('tomorrow-work').value || 'Next milestone tasks';
+            const report = `[MUZOPS STATUS] ${new Date().toLocaleDateString()}\n---\n✓ TODAY: ${today}\n→ NEXT: ${tomorrow}\n---`;
+            document.getElementById('dsm-output-text').innerText = report;
+            document.getElementById('dsm-result').classList.remove('hidden');
+        }
+
+        function copyDSM() {
+            const text = document.getElementById('dsm-output-text').innerText;
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+        }
+    </script>
+</body>
+</html>
